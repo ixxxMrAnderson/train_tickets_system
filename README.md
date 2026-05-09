@@ -1,228 +1,228 @@
 # TTS: Train Ticket System
 
-# 《开发文档》
+# Development Documentation
 
-## 一、模块划分图
+## 1. Module Diagram
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/work.png)
 
-## 二、函数功能
-### Users类
-| 函数名 | 描述 | 返回信息 |
+## 2. Function Overview
+### Users Class
+| Function Name | Description | Return Information |
 | :-----: | :-----:  | :-----: |
-| init | 初始化，创建B+树 | 无返回值 | 
-| print_user | 输出用户 | 无返回值 |
-| add_user | 添加用户 | 成功 or 失败 | 
-| login | 用户登录 | 成功 or 失败 |
-| logout | 用户登出 | 成功 or 失败 |
-| query_profile | 查询用户信息 | 用户信息 or 失败 |
-| modify_profile | 修改用户信息 | 用户信息 or 失败 |
-### Trains类
-| 函数名 | 描述 | 返回信息 |
+| init | Initialize and create the B+ tree | No return value |
+| print_user | Print users | No return value |
+| add_user | Add a user | Success or failure |
+| login | User login | Success or failure |
+| logout | User logout | Success or failure |
+| query_profile | Query user information | User information or failure |
+| modify_profile | Modify user information | User information or failure |
+### Trains Class
+| Function Name | Description | Return Information |
 | :-----: | :-----:  | :--------: |
-| init | 初始化，创建B+树 | 无返回值 | 
-| add_train | 添加火车 | 成功 or 失败 |
-| release_train | 发布火车 | 成功 or 失败 |
-| query_train | 查询某天的某车次 | 车次信息 or 失败 |
-| delete_train | 删除火车 | 成功 or 失败 |
-| query_ticket | 查询某天直达车票 | 所有符合要求的车票 or 失败 |
-| get_ticket | 查询某时间之后直达车票 | 最优情况的车票 |
-| query_transfer | 查询某天换乘车票 | 最优情况的车票 or 失败|
-### Orders类
-| 函数名 | 描述 | 返回信息 |
+| init | Initialize and create the B+ tree | No return value |
+| add_train | Add a train | Success or failure |
+| release_train | Release a train | Success or failure |
+| query_train | Query a specific train on a specific day | Train information or failure |
+| delete_train | Delete a train | Success or failure |
+| query_ticket | Query direct tickets for a specific day | All matching tickets or failure |
+| get_ticket | Query direct tickets after a specific time | The optimal ticket option |
+| query_transfer | Query transfer tickets for a specific day | The optimal ticket option or failure |
+### Orders Class
+| Function Name | Description | Return Information |
 | :-----: | :-----:  | :--------: |
-| init | 初始化，创建B+树 | 无返回值 | 
-| buy_ticket | 购买某车次列车车票 | 成功 or 候补 or 失败 |
-| query_order | 查询用户订单 | 用户全部订单 or 失败 |
-| refund_ticket |  退票 | 成功 or 失败 |
-### Hash_table类
-| 函数名 | 描述 | 返回信息 |
+| init | Initialize and create the B+ tree | No return value |
+| buy_ticket | Buy a ticket for a specific train | Success, waitlist, or failure |
+| query_order | Query user orders | All user orders or failure |
+| refund_ticket | Refund a ticket | Success or failure |
+### Hash_table Class
+| Function Name | Description | Return Information |
 | :-----: | :-----:  | :--------: |
-| hash | 获取字符串哈希值 | 哈希值 |
+| hash | Get the hash value of a string | Hash value |
 
-### Connector类
-| 函数名 | 描述 | 返回信息 |
+### Connector Class
+| Function Name | Description | Return Information |
 | :-----: | :-----:  | :--------: |
-| init | 程序初始化 | 无返回值 |
-| work | 程序主体部分 | 无返回值 |
-| clean | 清楚全部数据 | 无返回值 |
-| exit | 退出程序 | 无返回值 |
-### 其他函数（python）
-| 函数名 | 描述 | 返回信息 |
+| init | Initialize the program | No return value |
+| work | Main program workflow | No return value |
+| clean | Clear all data | No return value |
+| exit | Exit the program | No return value |
+### Other Functions (Python)
+| Function Name | Description | Return Information |
 | :-----: | :-----:  | :--------: |
-| get_result | python端与cpp端交互 | 请求结果 |
-| id_check_valid | 判断用户输入的train_id/Username是否合法 | 判断结果 |
-| password_check_valid | 判断用户输入的密码是否合法 | 判断结果 |
-| name_check_valid | 判断用户输入的姓名是否合法 | 判断结果 |
-| check_station_name | 判断用户输入的站名数量是否与输入的站数相符 | 判断结果 |
-| check_num | 判断用户输入的价格/行车时间/经停时间是否合法 | 判断结果 |
-| check_date | 判断用户选择的日期是否合法 | 判断结果 |
-| form_date | 转换成标准日期格式 | 转换结果 |
-| form_time | 转换成标准时间格式 | 转换结果 |
+| get_result | Interaction between the Python side and the C++ side | Request result |
+| id_check_valid | Check whether the train_id/Username entered by the user is valid | Validation result |
+| password_check_valid | Check whether the password entered by the user is valid | Validation result |
+| name_check_valid | Check whether the name entered by the user is valid | Validation result |
+| check_station_name | Check whether the number of station names entered by the user matches the station count | Validation result |
+| check_num | Check whether the price/travel time/stopover time entered by the user is valid | Validation result |
+| check_date | Check whether the date selected by the user is valid | Validation result |
+| form_date | Convert to the standard date format | Conversion result |
+| form_time | Convert to the standard time format | Conversion result |
 
-## 三、文件设计
-| B+树名称 | 功用 |
+## 3. File Design
+| B+ Tree Name | Purpose |
 | :-----: | :-----: |
-| bpuser | 记录用户信息 |
-| bptrain | 记录火车信息 |
-| bpseat | 记录余票信息 |
-| bpstation | 记录站台信息 |
-| bpstrain | 记录经过每个站台的火车信息 |
-| bpuorder | 记录用户的订单信息 |
-| bptorder | 记录火车的候补订单信息 |
+| bpuser | Records user information |
+| bptrain | Records train information |
+| bpseat | Records remaining ticket information |
+| bpstation | Records station information |
+| bpstrain | Records train information for each station passed through |
+| bpuorder | Records user order information |
+| bptorder | Records waitlisted train order information |
 
-## 四、组员工作情况
+## 4. Team Contributions
 
-|  姓名  |  任务  |
+| Name | Task |
 | :-----: | :-----: |
-| 储浩天 |  网页设计、前后端衔接、开发手册&使用手册撰写  |
-| 任一凡 |  后端逻辑主体部分、开发手册撰写  |
-|  衡阳  |  B+树部分(含缓存、文件操作)、开发手册撰写  |
+| Haotian Chu | Webpage design, frontend-backend integration, development manual and user manual writing |
+| Yifan Ren | Main backend logic, development manual writing |
+| Yang Heng | B+ tree implementation, including cache and file operations, development manual writing |
 
 ------
 
-# 《使用手册》
+# User Manual
 
 
-### 一、下载安装
+### 1. Download and Installation
 
-* 需要python、MINGW或其他C/C++编译器
-* pip install flask以及相关第三方库
-* git clone
-* 编译运行backend文件夹中所有cpp
-* 在master目录下打开终端，输入flask run
-* 打开浏览器（推荐Chrome）进入网页 "http://127.0.0.1:5000/"
+* Python and MINGW or another C/C++ compiler are required.
+* Run `pip install flask` and install the related third-party libraries.
+* Run `git clone`.
+* Compile and run all C++ files in the `backend` folder.
+* Open a terminal in the `master` directory and run `flask run`.
+* Open a browser, Chrome is recommended, and visit "http://127.0.0.1:5000/".
 
-### 二、注册与登录
+### 2. Registration and Login
 
-* 由于未登录，第一次进入网页会路由至tourist page
+* Because you are not logged in, the first visit to the website will route you to the tourist page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/tourist.png)
 
-* 刷新一下，页面上有关火车的图片会随机发生变化
+* Refresh the page, and the train-related image on the page will change randomly.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/tourist2.png)
 
-* 点击sidebar上的各种操作，系统会提示你“无权限访问”
+* Click any operation in the sidebar, and the system will notify you that you have no permission to access it.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/tourist_fail.png)
 
-* 点击login，跳转至登陆界面
+* Click login to go to the login page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/login.png)
 
-* 点击Signup，跳转至注册界面
+* Click Signup to go to the registration page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/register.png)
 
-* 若输入不合规范，会在表单上方通过flash进行提示
+* If the input is invalid, a flash message will be displayed above the form.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/register_invalid.png)
 
-* 若输入无误，且注册的Username尚未使用，则注册成功，跳转至登陆界面
+* If the input is valid and the registered Username has not been used, registration succeeds and the page redirects to the login page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/register_success.png)
 
-* 若Username已经存在，注册失败
+* If the Username already exists, registration fails.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/register_fail.png)
 
-* 登录成功后进入主页，发现New User的数量加一
+* After a successful login, you will enter the home page and see that the New User count has increased by one.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/index.png)
 
 
-### 三、火车操作
+### 3. Train Operations
 
-* 点击sidebar中的Train->添加，进入add_train页面
+* Click Train -> Add in the sidebar to enter the add_train page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/add_train.png)
 
-* 按照提示输入火车信息，如果输入不合法，同样会通过flash进行提示
+* Enter train information according to the prompts. If the input is invalid, a flash message will also be displayed.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/add_train_invalid.png)
 
-* 点击sidebar中的Train->查询，进入query_train页面
+* Click Train -> Query in the sidebar to enter the query_train page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/query_train.png)
 
-* 查询的火车如果尚未发布，可以在该页面快捷发布/删除
+* If the queried train has not been released yet, you can release or delete it directly on this page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/query_train_result.png)
 
-* 发布火车操作的确认环节
+* Confirmation step for releasing a train.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/query_train_release_ing.png)
  
-* 发布之后的火车状态显示为Released
+* After release, the train status is displayed as Released.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/query_train_released.png)
 
-* 也可以通过点击sidebar中的Train->发布，进入release_train页面
+* You can also click Train -> Release in the sidebar to enter the release_train page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/release.png)
 
-* 点击sidebar中的Train->删除，进入delete_train页面
+* Click Train -> Delete in the sidebar to enter the delete_train page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/delete.png)
 
-### 四、用户操作
+### 4. User Operations
 
-* 点击sidebar中的User->添加新用户，进入add_user页面
+* Click User -> Add New User in the sidebar to enter the add_user page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/add_user.png)
 
-* 若输入不合规范，会在表单上方通过flash进行提示
+* If the input is invalid, a flash message will be displayed above the form.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/add_user_invalid.png)
 
-* 点击sidebar中的User->查询/修改，进入query_user页面
+* Click User -> Query/Modify in the sidebar to enter the query_user page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/query_user.png)
 
-* 若查询用户存在且权限不大于当前用户，成功查询，并可进行修改操作
+* If the queried user exists and has a permission level no higher than the current user, the query succeeds and modification is available.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/query_user_result.png)
 
-* 点击Modify，进入修改页面
+* Click Modify to enter the modification page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/modify.png)
-### 五、票务操作
+### 5. Ticket Operations
 
-* 点击sidebar中的Tickets->票务查询，进入query_tickets页面
+* Click Tickets -> Ticket Query in the sidebar to enter the query_tickets page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/query_ticket.png)
 
-* 可以通过'time','cost','transfer one and only'三种不同的优先方式输出结果，若有符合查询请求的火车票，可直接进行购买
+* Results can be output using three different priorities: 'time', 'cost', and 'transfer one and only'. If matching tickets are found, they can be purchased directly.
  
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/query_ticket_result.png)
 
-* 点击Buy，跳转至buy_tickets页面，车站名和日期会自动填充（也可以通过点击sidebar中的Tickets->买票，自主进入buy_tickets页面）
+* Click Buy to go to the buy_tickets page. The station names and date will be filled in automatically. You can also click Tickets -> Buy Ticket in the sidebar to enter the buy_tickets page manually.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/query_to_buy.png)
 
-* 根据候补意愿的选择和车辆情况提示购买结果
+* The purchase result is displayed based on your waitlist preference and the train availability.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/buy_success.png)
 
-### 六、其他操作
+### 6. Other Operations
 
-* 点击sidebar中的My Order，进入我的订单，可进行退票操作
+* Click My Order in the sidebar to enter My Orders, where you can refund tickets.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/my_order.png)
 
-* 退票成功后的订单显示为Refunded
+* After a successful refund, the order is displayed as Refunded.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/my_order_refunded.png)
 
-* 点击sidebar中的Clear，进入清库界面
+* Click Clear in the sidebar to enter the database clearing page.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/clear_all.png)
 
-* 点击Clear all data，系统会向用户再三确认
+* Click Clear all data, and the system will ask the user to confirm multiple times.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/clear_warning.png)
 
-* 确认清空后，重新回到tourist page，所有数据清除
+* After confirming the clearing operation, you will return to the tourist page and all data will be cleared.
 
 ![avatar](https://raw.githubusercontent.com/ixxxMrAnderson/TrainTickets/master/img/clear.png)
